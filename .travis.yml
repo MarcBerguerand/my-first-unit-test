@@ -1,0 +1,35 @@
+language: c
+
+stages:
+  -name: compile files
+  -name: run files
+  
+jobs:
+  include:
+    - stage: compile files
+      name: "compile HW files"
+      before_script:
+        - cd HW_behaviour
+      script:
+        - gcc main.c operations.c -o outputRun
+    - stage: compile files
+      name: "compile tester files"
+      before_script:
+        - cd tester_behaviour
+      script:
+        - gcc main.c unity/unity.c test_operations.c ../HW_behaviour/operations.c -o outputTest
+        
+    - stage: run files
+      name: "run HW files"
+      before_script:
+        - cd HW_behaviour
+      script:
+        - gcc main.c operations.c -o outputRun
+        - ./outputRun
+    - stage: run files
+      name: "run tester files"
+      before_script:
+        - cd tester_behaviour
+      script:
+        - gcc main.c unity/unity.c test_operations.c ../HW_behaviour/operations.c -o outputTest
+        - ./outputTest
