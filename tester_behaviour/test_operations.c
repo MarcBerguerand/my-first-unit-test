@@ -13,5 +13,5 @@ void test_Substraction(void)
     TEST_ASSERT_EQUAL_INT(40, sub(50,10));
     TEST_ASSERT_EQUAL_INT(40, sub(50,10));
     TEST_ASSERT_EQUAL_INT(-10,sub(50,60));
-    TEST_ASSERT_EQUAL_INT(-10,sub(-5,5));
+    TEST_ASSERT_EQUAL_INT(0,sub(-5,5));
 }
